@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+Zahra Arshad
+Jan 14 2019
+A simple game of rock, paper, scissors
+-->
+<html>
+    <head>
+        <title>Rock, Paper, Scissors</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style/pageStyle.css">
+    </head>
+    <body>
+
+
+        <div id="header">
+            <h1>Rock, Paper, Scissors<br>
+                Zahra Arshad<br>
+                A simple game
+            </h1>
+        </div>
+
+        <hr>
+
+        <a id="button" href="index.html">Exit to Homepage</a>
+        <script>
+
+            var options = ["Rock", "Paper", "Scissor"];
+            var tie = "Tie!";
+            var playerWin = "You Win!";
+            var computerWin = "Computer Wins!";
+            var playerCounter = 0;
+            var compCounter = 0;
+            do {
+                var playerInput = parseInt(prompt("Choose Rock(1), Paper(2), or Scissor(3)"));
+                var computerMove = Math.round(Math.random() * 2 + 1);
+                console.log(computerMove);
+                while (playerInput < 1 || playerInput > 3) {
+                    playerInput = parseInt(prompt("Choose Rock(1), Paper(2), or Scissor(3)"));
+                }
+
+                if (playerInput === 1) { //rock
+                    if (computerMove === 1) { //rock
+                        alert("Computer: " + options[computerMove - 1] + "\nYou: " + options[playerInput - 1] + "\n" + tie);
+                    } else if (computerMove === 2) { //paper
+                        alert("Computer: " + options[computerMove - 1] + "\nYou: " + options[playerInput - 1] + "\n" + computerWin);
+                        compCounter++;
+                    } else if (computerMove === 3) { //scissor
+                        alert("Computer: " + options[computerMove - 1] + "\nYou: " + options[playerInput - 1] + "\n" + playerWin);
+                        playerCounter++;
+                    }
+
+                } else if (playerInput === 2) { //paper
+                    if (computerMove === 1) { //rock
+                        alert("Computer: " + options[computerMove - 1] + "\nYou: " + options[playerInput - 1] + "\n" + playerWin);
+                        playerCounter++;
+                    } else if (computerMove === 2) { //paper
+                        alert("Computer: " + options[computerMove - 1] + "\nYou: " + options[playerInput - 1] + "\n" + tie);
+                    } else if (computerMove === 3) { //scissor
+                        alert("Computer: " + options[computerMove - 1] + "\nYou: " + options[playerInput - 1] + "\n" + computerWin);
+                        compCounter++;
+                    }
+
+                } else if (playerInput === 3) { //scissor
+                    if (computerMove === 1) { //rock
+                        alert("Computer: " + options[computerMove - 1] + "\nYou: " + options[playerInput - 1] + "\n" + computerWin);
+                        compCounter++;
+                    } else if (computerMove === 2) { //paper
+                        alert("Computer: " + options[computerMove - 1] + "\nYou: " + options[playerInput - 1] + "\n" + playerWin);
+                        playerCounter++;
+                    } else if (computerMove === 3) { //scissor
+                        alert("Computer: " + options[computerMove - 1] + "\nYou: " + options[playerInput - 1] + "\n" + tie);
+                    }
+                }
+                var confirmation = confirm("Do you want to play again?");
+            } while (confirmation === true);
+
+            if (compCounter > playerCounter)
+                alert("Computer's Score: " + compCounter + "\nYour Score: " + playerCounter + "\nComputer Wins!" + "\nThanks for playing!");
+            else if (compCounter < playerCounter)
+                alert("Computer's Score: " + compCounter + "\nYour Score: " + playerCounter + "\nYou Win!" + "\nThanks for playing!");
+            else
+                alert("Computer's Score: " + compCounter + "\nYour Score: " + playerCounter + "\nTie!" + "\nThanks for playing!");
+
+        </script>
+
+    </body>
+</html>
